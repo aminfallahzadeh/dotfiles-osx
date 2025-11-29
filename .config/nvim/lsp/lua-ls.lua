@@ -1,5 +1,5 @@
 return {
-	cmd = { "lua_ls" },
+	cmd = { "lua-language-server", "--stdio" },
 	filetypes = { "lua" },
 	root_markers = {
 		".luarc.json",

@@ -1,5 +1,5 @@
 return {
-	cmd = { "tailwindcss" },
+	cmd = { "tailwindcss-language-server", "--stdio" },
 	filetypes = {
 		"html",
 		"javascript",
