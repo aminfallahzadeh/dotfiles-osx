@@ -1,90 +1,120 @@
--- basic keymaps
+-- =============================================
+-- My Neovim Config
+-- OS : OSX
+-- Author: Amin Fallahzadeh
+-- =============================================
+
+-------------------------------------------------
+-- Leader Keys
+-------------------------------------------------
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
+-------------------------------------------------
+-- Keymaps
+-------------------------------------------------
 vim.keymap.set("n", "<c-k>", ":wincmd k<CR>")
 vim.keymap.set("n", "<c-j>", ":wincmd j<CR>")
 vim.keymap.set("n", "<c-h>", ":wincmd h<CR>")
 vim.keymap.set("n", "<c-l>", ":wincmd l<CR>")
 
--- disbale banner for nvim file explorer
-vim.cmd("let g:netrw_banner = 0")
+-------------------------------------------------
+-- Netrw & File Explorer
+-------------------------------------------------
+vim.cmd("let g:netrw_banner = 0") -- disable netrw banner
+-- vim.g.loaded = 1
+-- vim.g.loaded_netrwPlugin = 1
 
--- set leader key to space
+-------------------------------------------------
+-- UI: Fillchars & Cursor
+-------------------------------------------------
 vim.opt.fillchars = { eob = " " }
+vim.o.guicursor = "n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50"
+vim.opt.cursorline = true
+vim.opt.cursorlineopt = "number"
+vim.opt.ruler = true
+vim.opt.termguicolors = true
+vim.opt.background = "dark"
+vim.o.winborder = "rounded"
+vim.opt.showcmd = true
+vim.opt.cmdheight = 1
+vim.opt.signcolumn = "yes"
+vim.opt.scrolloff = 8
+vim.opt.shortmess:append("sI") -- disable vim intro
 
--- go to previous/next line with h,l,left arrow and right arrow
--- when cursor reaches end/beginning of line
-vim.opt.whichwrap:append("<>[]hl")
-
--- encoding format
+-------------------------------------------------
+-- Encoding
+-------------------------------------------------
 vim.scriptencoding = "utf-8"
 vim.opt.encoding = "utf-8"
 vim.opt.fileencoding = "utf-8"
 
--- cursor shape
-vim.o.guicursor = "n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50"
-
--- line numbers
+-------------------------------------------------
+-- Line Numbers
+-------------------------------------------------
 vim.opt.nu = true
 vim.opt.rnu = true
 
--- spacing settings
+-------------------------------------------------
+-- Movement & Wrap Behaviour
+-------------------------------------------------
+vim.opt.whichwrap:append("<>[]hl")
+vim.opt.wrap = true
+vim.opt.linebreak = true
+vim.opt.breakindent = true
+
+-------------------------------------------------
+-- Tabs & Indentation
+-------------------------------------------------
 vim.opt.tabstop = 2
 vim.opt.softtabstop = 2
-vim.opt.smarttab = true
 vim.opt.shiftwidth = 2
 vim.opt.expandtab = true
+vim.opt.smarttab = true
 vim.opt.autoindent = true
-vim.opt.breakindent = true
 vim.opt.smartindent = true
-vim.opt.wrap = true
 
--- silent mode
+-------------------------------------------------
+-- Undo, Backup & Swap
+-------------------------------------------------
 vim.opt.swapfile = false
 vim.opt.backup = false
+vim.opt.undofile = true
 vim.opt.wildignore:append({ "*/node_modules/*" })
 
--- enable undo after restarting
-vim.opt.undofile = true
-
--- search settings
-vim.opt.ignorecase = true -- Case insensitive searching UNLESS /C or capital in search
+-------------------------------------------------
+-- Search
+-------------------------------------------------
+vim.opt.ignorecase = true
 vim.opt.smartcase = true
 
--- enable mouse
+-------------------------------------------------
+-- Mouse & Clipboard
+-------------------------------------------------
 vim.opt.mouse = "a"
+vim.opt.clipboard:append("unnamedplus")
 
--- gui
-vim.o.winborder = "rounded"
-vim.opt.termguicolors = true
-vim.opt.showcmd = true
-vim.opt.cmdheight = 1
-vim.opt.signcolumn = "yes"
-vim.opt.scrolloff = 8 -- always keeep 10 line above/below cursor
-vim.opt.shortmess:append("sI") -- disable vim intro
-vim.opt.cursorline = true -- disable cursorline highlight
-vim.opt.cursorlineopt = "number" -- disable cursorline highlighti
-vim.opt.ruler = true
-vim.opt.background = "dark"
-
--- backspace behaviour
-vim.opt.backspace = { "start", "eol", "indent" }
-
--- windows / buffers
+-------------------------------------------------
+-- Windows / Splits
+-------------------------------------------------
 vim.opt.splitright = true
 vim.opt.splitbelow = true
 
--- should test
--- vim.opt.updatetime = 50
-vim.opt.clipboard:append("unnamedplus")
--- vim.opt.hlsearch = true
--- vim.g.editorconfig = true
+-------------------------------------------------
+-- Performance
+-------------------------------------------------
+vim.opt.updatetime = 250
+vim.opt.timeoutlen = 300
 
-vim.g.sass_variables_file = "_variables.scss"
-vim.o.termbidi = true
+-------------------------------------------------
+-- Backspace Behaviour
+-------------------------------------------------
+vim.opt.backspace = { "start", "eol", "indent" }
 
--- disable auto comment
+-------------------------------------------------
+-- Auto Commands
+-------------------------------------------------
+-- Disable automatic comments
 vim.api.nvim_create_autocmd("FileType", {
 	pattern = "*",
 	callback = function()
@@ -92,11 +122,14 @@ vim.api.nvim_create_autocmd("FileType", {
 	end,
 })
 
--- disbale unnecessary diagnostics
+-------------------------------------------------
+-- Highlight Fixes
+-------------------------------------------------
 vim.api.nvim_set_hl(0, "DiagnosticUnnecessary", {})
 
--- fix checkhealth
+-------------------------------------------------
+-- Misc / Extra Settings
+-------------------------------------------------
+vim.g.sass_variables_file = "_variables.scss"
+vim.o.termbidi = true
 vim.o.sessionoptions = "buffers,curdir,folds,help,tabpages,winsize,winpos,localoptions"
-
-vim.opt.updatetime = 250
-vim.opt.timeoutlen = 300

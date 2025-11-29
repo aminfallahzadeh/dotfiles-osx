@@ -1,7 +1,7 @@
 return {
 	{
 		"nvim-treesitter/nvim-treesitter",
-		event = { "BufReadPre", "BufNewFile" },
+		event = "BufReadPost",
 		build = ":TSUpdate",
 		config = function()
 			-- import nvim-treesitter plugin

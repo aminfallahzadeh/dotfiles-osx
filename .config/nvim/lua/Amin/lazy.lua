@@ -22,9 +22,25 @@ require("lazy").setup({
 		{ import = "Amin.plugins" },
 		-- { import = "Amin.plugins.lsp" },
 	},
+	defaults = { lazy = true },
 	-- Configure any other settings here. See the documentation for more details.
 	-- colorscheme that will be used when installing plugins.
 	-- install = { colorscheme = { "habamax" } },
 	-- automatically check for plugin updates
-	checker = { enabled = true },
+	checker = { enabled = false },
+	ui = { border = "rounded" },
+	performance = {
+		cache = { enabled = true },
+		rtp = {
+			disabled_plugins = {
+				"netrwPlugin",
+				"gzip",
+				"tarPlugin",
+				"tohtml",
+				"tutor",
+				"zipPlugin",
+			},
+		},
+	},
+	debug = false,
 })

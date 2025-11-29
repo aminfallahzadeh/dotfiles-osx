@@ -2,11 +2,14 @@ return {
 	{ "L3MON4D3/LuaSnip", keys = {} },
 	{
 		"saghen/blink.cmp",
+		keys = { "i", "a", "I", "A", "o", "O" },
 		dependencies = {
-			"rafamadriz/friendly-snippets",
-			"onsails/lspkind.nvim",
+			-- "rafamadriz/friendly-snippets",
+			-- "onsails/lspkind.nvim",
+			{ "rafamadriz/friendly-snippets", lazy = true },
+			{ "onsails/lspkind.nvim", lazy = true },
 		},
-		-- event = "InsertEnter",
+		event = "InsertEnter",
 		version = "*",
 		config = function()
 			-- vim.cmd('highlight Pmenu guibg=none')
