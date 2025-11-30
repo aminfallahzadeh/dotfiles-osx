@@ -1,24 +1,34 @@
+-------------------------------------------------
+-- name : lualine-nvim
+-- url  : https://github.com/nvim-lualine/lualine.nvim
+----------------------------------------------------------------------
+-- Helper: Show buffer name + diagnostics icons
+----------------------------------------------------------------------
 local function buffer_with_diagnostics(bufnr)
+	-- Get filename (or "[No Name]")
 	local name = vim.fn.fnamemodify(vim.api.nvim_buf_get_name(bufnr), ":t")
 	if name == "" then
 		name = "[No Name]"
 	end
 
+	-- Count diagnostics
 	local diagnostics = vim.diagnostic.get(bufnr)
 	local errors, warnings, infos, hints = 0, 0, 0, 0
 
 	for _, d in ipairs(diagnostics) do
-		if d.severity == vim.diagnostic.severity.ERROR then
+		local sev = d.severity
+		if sev == vim.diagnostic.severity.ERROR then
 			errors = errors + 1
-		elseif d.severity == vim.diagnostic.severity.WARN then
+		elseif sev == vim.diagnostic.severity.WARN then
 			warnings = warnings + 1
-		elseif d.severity == vim.diagnostic.severity.INFO then
+		elseif sev == vim.diagnostic.severity.INFO then
 			infos = infos + 1
-		elseif d.severity == vim.diagnostic.severity.HINT then
+		elseif sev == vim.diagnostic.severity.HINT then
 			hints = hints + 1
 		end
 	end
 
+	-- Pick icon (error > warn > info > hint)
 	local icon = ""
 	if errors > 0 then
 		icon = " "
@@ -33,21 +43,30 @@ local function buffer_with_diagnostics(bufnr)
 	return name .. icon
 end
 
+----------------------------------------------------------------------
+-- Helper: Lines/Columns info
+-- Shows:
+--   • In visual:   "󰈛 10L 20C"
+--   • Other mode:  " 128" (buffer line count)
+----------------------------------------------------------------------
 local function lines_info()
 	local mode = vim.fn.mode()
-	if mode:find("[vV]") then
-		-- Visual modes
-		local _, ls, cs = table.unpack(vim.fn.getpos("v"))
-		local _, le, ce = table.unpack(vim.fn.getpos("."))
-		local line_count = math.abs(le - ls) + 1
-		local col_count = math.abs(ce - cs) + 1
-		return string.format("󰈛 %dL %dC", line_count, col_count)
+
+	-- If in visual mode, calculate selection size
+	if mode:find("[vV]") then
+		local starts = vim.fn.line("v")
+		local ends = vim.fn.line(".")
+		local lines = starts <= ends and ends - starts + 1 or starts - ends + 1
+		return "󰈛 " .. tostring(lines) .. "L " .. tostring(vim.fn.wordcount().visual_chars) .. "C"
 	else
-		-- Normal/Insert/etc.
+		-- Normal info: total lines in buffer
 		return " " .. vim.api.nvim_buf_line_count(0)
 	end
 end
 
+----------------------------------------------------------------------
+-- Helper: Shorten filepath: only "dir/file"
+----------------------------------------------------------------------
 local function short_filepath()
 	local filepath = vim.fn.expand("%:~:.") -- expand with ~ or relative
 	local parts = vim.split(filepath, "/")
@@ -60,6 +79,9 @@ local function short_filepath()
 	end
 end
 
+----------------------------------------------------------------------
+-- Helper: Force-refresh lualine when starting/stopping macro recording
+----------------------------------------------------------------------
 local function setup_macro_refresh(lualine)
 	vim.api.nvim_create_autocmd("RecordingEnter", {
 		callback = function()
@@ -70,6 +92,9 @@ local function setup_macro_refresh(lualine)
 	})
 end
 
+----------------------------------------------------------------------
+-- Helper: Macro recording indicator (RECORDING @q)
+----------------------------------------------------------------------
 local function macro_recording_status()
 	local function current_status()
 		local register = vim.fn.reg_recording()
@@ -78,7 +103,13 @@ local function macro_recording_status()
 	return { "macro-recording", fmt = current_status }
 end
 
+----------------------------------------------------------------------
+-- Main Plugin Config
+----------------------------------------------------------------------
 return {
+	------------------------------------------------------------------
+	-- 1. Lualine core
+	------------------------------------------------------------------
 	{
 		"nvim-lualine/lualine.nvim",
 		event = "VeryLazy",
@@ -93,12 +124,20 @@ return {
 			local lualine = require("lualine")
 			setup_macro_refresh(lualine)
 			lualine.setup({
+
+				------------------------------------------------------------------
+				-- General options
+				------------------------------------------------------------------
 				options = {
 					theme = "nord",
 					component_separators = "",
 					-- section_separators = { left = "", right = "" },
 					disabled_filetypes = { "alpha" },
 				},
+
+				------------------------------------------------------------------
+				-- TABLINE (top)
+				------------------------------------------------------------------
 				tabline = {
 					-- lualine_a = { "buffers" },
 					lualine_a = {
@@ -133,6 +172,10 @@ return {
 					},
 					lualine_z = { "tabs" },
 				},
+
+				------------------------------------------------------------------
+				-- STATUSLINE (bottom)
+				------------------------------------------------------------------
 				sections = {
 					lualine_a = {
 						-- { "mode", separator = { left = "", right = "" }, right_padding = 2 },
@@ -177,6 +220,10 @@ return {
 			})
 		end,
 	},
+
+	------------------------------------------------------------------
+	-- 2. Time extension (for ctime + cdate)
+	------------------------------------------------------------------
 	{
 		"archibate/lualine-time",
 		dependencies = { "nvim-tree/nvim-web-devicons" },

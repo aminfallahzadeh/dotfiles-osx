@@ -1,3 +1,7 @@
+-------------------------------------------------
+-- name : auto-session
+-- url  : https://github.com/rmagatti/auto-session
+-------------------------------------------------
 return {
 	"rmagatti/auto-session",
 	lazy = false,
@@ -10,10 +14,6 @@ return {
 				theme_conf = { border = true },
 				previewer = false,
 			},
-			-- NOTE: moved to whichkey.lua
-			-- vim.keymap.set("n", "<leader>ls", require("auto-session.session-lens").search_session, {
-			-- 	noremap = true,
-			-- }),
 		})
 	end,
 }

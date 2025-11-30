@@ -1,3 +1,7 @@
+-------------------------------------------------
+-- name : tiny-code-actions-nvim
+-- url  : https://github.com/rachartier/tiny-code-action.nvim
+-------------------------------------------------
 return {
 	"rachartier/tiny-code-action.nvim",
 	dependencies = {

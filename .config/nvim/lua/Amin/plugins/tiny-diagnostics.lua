@@ -1,3 +1,7 @@
+-------------------------------------------------
+-- name : tiny-inline-diagnostics-nvim
+-- url  : https://github.com/rachartier/tiny-inline-diagnostic.nvim
+-------------------------------------------------
 return {
 	"rachartier/tiny-inline-diagnostic.nvim",
 	event = "VeryLazy",

@@ -1,3 +1,7 @@
+-------------------------------------------------
+-- name : snacks-nvim
+-- url  : https://github.com/folke/snacks.nvim
+-------------------------------------------------
 local logs = {
 	a = [[
      █████╗ ███╗   ███╗██╗███╗   ██╗      
@@ -43,22 +47,35 @@ local logs = {
 }
 
 return {
-	-- HACK: docs @ https://github.com/folke/snacks.nvim/blob/main/docs
 	{
 		"folke/snacks.nvim",
 		priority = 1000,
 		lazy = false,
-		-- NOTE: Options
+
+		------------------------------------------------------------------
+		-- Snacks global options
+		------------------------------------------------------------------
 		opts = {
-			-- Snacks Modules
+
+			------------------------------------------------------------------
+			-- Input: minimal UI input replacement
+			------------------------------------------------------------------
 			input = {
 				enabled = true,
 			},
+
+			------------------------------------------------------------------
+			-- Quickfile: improved quick file previews
+			------------------------------------------------------------------
 			quickfile = {
 				enabled = true,
 				exclude = { "latex" },
 			},
-			-- HACK: read picker docs @ https://github.com/folke/snacks.nvim/blob/main/docs/picker.md
+
+			------------------------------------------------------------------
+			-- Picker: the heart of snacks (file browser, grep, etc.)
+			-- Docs: https://github.com/folke/snacks.nvim/blob/main/docs/picker.md
+			------------------------------------------------------------------
 			picker = {
 				enabled = true,
 				matchers = {
@@ -72,13 +89,23 @@ return {
 						icon_width = 2,
 					},
 				},
+
+				-- Default layout preset (can be overridden elsewhere)
 				layout = {
 					-- presets options : "default" , "ivy" , "ivy-split" , "telescope" , "vscode", "select" , "sidebar"
 					-- override picker layout in whichkey.lua function as a param below
 					preset = "telescope", -- defaults to this layout unless overidden
 					cycle = false,
 				},
+
+				------------------------------------------------------------------
+				-- Custom layout presets
+				------------------------------------------------------------------
 				layouts = {
+
+					------------------------------------------------------------------
+					-- Minimal selection layout (small popup, no preview)
+					------------------------------------------------------------------
 					select = {
 						preview = false,
 						layout = {
@@ -96,8 +123,12 @@ return {
 							{ win = "preview", title = "{preview}", width = 0.6, height = 0.4, border = "top" },
 						},
 					},
+
+					------------------------------------------------------------------
+					-- “Telescope-like” layout with list + preview
+					------------------------------------------------------------------
 					telescope = {
-						reverse = true, -- set to false for search bar to be on top
+						reverse = true, -- false = input bar at top
 						layout = {
 							box = "horizontal",
 							backdrop = false,
@@ -125,6 +156,10 @@ return {
 							},
 						},
 					},
+
+					------------------------------------------------------------------
+					-- Ivy layout (bottom panel)
+					------------------------------------------------------------------
 					ivy = {
 						layout = {
 							box = "vertical",
@@ -145,20 +180,27 @@ return {
 					},
 				},
 			},
+
+			----------------------------------------------------------------------
+			-- Dashboard: startup screen
+			----------------------------------------------------------------------
 			dashboard = {
 				width = 40,
-				row = nil, -- dashboard position. nil for center
-				col = nil, -- dashboard position. nil for center
-				pane_gap = 4, -- empty columns between vertical panes
+				row = nil, -- nil = center vertically
+				col = nil, -- nil = center horizontally
+				pane_gap = 4, -- spacing between dashboard columns
 				autokeys = "1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ", -- autokey sequence
 				-- These settings are used by some built-in sections
 				preset = {
-					-- Defaults to a picker that supports `fzf-lua`, `telescope.nvim` and `mini.pick`
-					---@type fun(cmd:string, opts:table)|nil
-					pick = nil,
-					-- Used by the `keys` section to show whichkey.lua.
-					-- Set your custom whichkey.lua here.
-					-- When using a function, the `items` argument are the default whichkey.lua.
+
+					------------------------------------------------------------------
+					-- How “picker” actions on dashboard buttons are resolved
+					------------------------------------------------------------------
+					pick = nil, -- default picker (fzf-lua / telescope / mini.pick)
+
+					------------------------------------------------------------------
+					-- Dashboard menu (buttons)
+					------------------------------------------------------------------
 					keys = {
 						{
 							icon = " ",
@@ -190,7 +232,10 @@ return {
 						},
 						{ icon = " ", key = "q", desc = "Quit", action = ":qa" },
 					},
-					-- Used by the `header` section
+
+					------------------------------------------------------------------
+					-- Dashboard header artwork (ASCII)
+					------------------------------------------------------------------
 					header = logs.a,
 				},
 			},

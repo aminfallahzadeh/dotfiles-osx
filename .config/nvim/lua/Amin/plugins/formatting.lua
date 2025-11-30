@@ -1,3 +1,7 @@
+-------------------------------------------------
+-- name : conform-nvim
+-- url  : https://github.com/stevearc/conform.nvim
+-------------------------------------------------
 return {
 	"stevearc/conform.nvim",
 	event = { "BufReadPre", "BufNewFile" },
@@ -62,23 +66,8 @@ return {
 			},
 		}
 
-		conform.formatters.deno_fmt = {
-			command = "deno",
-			args = { "fmt", "-", "--ext", "jsonc" },
-			stdin = true,
-		}
-
 		conform.formatters.shfmt = {
 			prepend_args = { "-i", "4" },
 		}
-
-		-- NOTE : moved to whichkey.lua
-		-- vim.keymap.set({ "n", "v" }, "<leader>mp", function()
-		-- 	conform.format({
-		-- 		lsp_fallback = true,
-		-- 		async = false,
-		-- 		timeout_ms = 1000,
-		-- 	})
-		-- end, { desc = " Prettier Format whole file or range (in visual mode) with" })
 	end,
 }

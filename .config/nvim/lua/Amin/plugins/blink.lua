@@ -1,3 +1,7 @@
+-------------------------------------------------
+-- name : blink-cmp
+-- url  : https://github.com/saghen/blink.cmp
+-------------------------------------------------
 return {
 	{ "L3MON4D3/LuaSnip", keys = {} },
 	{

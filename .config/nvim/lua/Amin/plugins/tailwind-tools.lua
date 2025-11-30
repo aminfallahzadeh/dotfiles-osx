@@ -1,3 +1,8 @@
+-------------------------------------------------
+-- name : tailwind-tools-nvim
+-- url  : https://github.com/luckasRanarison/tailwind-tools.nvim
+-- FIX: DEPRECATED
+-------------------------------------------------
 return {
 	"roobert/tailwindcss-colorizer-cmp.nvim",
 	{

@@ -1,8 +1,12 @@
+-------------------------------------------------
+-- name : todo-comment-nvim
+-- url  : https://github.com/folke/todo-comments.nvim
+-------------------------------------------------
 return {
 	-- Quickly Jump through the todo tags
 	"folke/todo-comments.nvim",
 	event = { "BufReadPre", "BufNewFile" },
-	dependencies = { "nvim-lua/plenary.nvim"},
+	dependencies = { "nvim-lua/plenary.nvim" },
 	config = function()
 		local todo_comments = require("todo-comments")
 
