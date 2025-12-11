@@ -32,7 +32,10 @@ return {
 					default = { "lsp", "path", "snippets", "buffer" },
 				},
 				keymap = {
+					preset = "none",
 					["<CR>"] = { "accept", "fallback" },
+					["<Down>"] = { "select_next", "fallback" },
+					["<Up>"] = { "select_prev", "fallback" },
 				},
 				cmdline = {
 					enabled = true,
