@@ -41,6 +41,8 @@ vim.opt.cmdheight = 1
 vim.opt.signcolumn = "yes"
 vim.opt.scrolloff = 8
 vim.opt.shortmess:append("sI") -- disable vim intro
+vim.cmd.syntax("on")
+vim.cmd.filetype("plugin indent on")
 
 -------------------------------------------------
 -- Encoding
