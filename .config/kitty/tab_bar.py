@@ -1,4 +1,5 @@
 """draw kitty tab"""
+
 # pyright: reportMissingImports=false
 # pylint: disable=E0401,C0116,C0103,W0603,R0913
 
@@ -17,8 +18,8 @@ def draw_tab(
     extra_data: ExtraData,
 ) -> int:
     orig_fg = screen.cursor.fg
-    left_sep, right_sep = ("", "")
-    # left_sep, right_sep = ("█", "█")
+    # left_sep, right_sep = ("", "")
+    left_sep, right_sep = (" █", "█")
     orig_bg = screen.cursor.bg
 
     def draw_sep(which: str) -> None:
