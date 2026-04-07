@@ -135,3 +135,12 @@ vim.api.nvim_set_hl(0, "DiagnosticUnnecessary", {})
 vim.g.sass_variables_file = "_variables.scss"
 vim.o.termbidi = true
 vim.o.sessionoptions = "buffers,curdir,folds,help,tabpages,winsize,winpos,localoptions"
+
+vim.treesitter.language.register("json", "json")
+
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = "json",
+	callback = function()
+		vim.treesitter.start()
+	end,
+})
