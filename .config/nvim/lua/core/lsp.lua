@@ -1,5 +1,5 @@
 -- vars
-local icons = require("Amin.core.icons")
+local icons = require("core.icons")
 
 -- LSP servers
 local servers = {

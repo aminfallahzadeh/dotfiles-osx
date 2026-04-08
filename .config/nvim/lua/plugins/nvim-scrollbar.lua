@@ -6,7 +6,7 @@ return {
 	"petertriho/nvim-scrollbar",
 	lazy = false,
 	config = function()
-		local nord = require("Amin.core.colors.nord")
+		local nord = require("core.colors.nord")
 		require("scrollbar").setup({
 			handle = {
 				color = nord.polar_night_4,

@@ -11,7 +11,7 @@ return {
 		-- local palette = colors.palette
 		-- local colors = require("kanso.colors").setup()
 		-- local palette = colors.palette
-		local colors = require("Amin.core.colors.dark")
+		local colors = require("core.colors.dark")
 
 		require("hlchunk").setup({
 			chunk = {

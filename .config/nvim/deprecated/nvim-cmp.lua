@@ -417,7 +417,7 @@ return {
 		local has_luasnip, luasnip = pcall(require, "luasnip")
 		-- local lspkind = require("lspkind")
 		-- local colorizer = require("tailwindcss-colorizer-cmp").formatter
-		local icons = require("Amin.core.icons")
+		local icons = require("core.icons")
 		local rhs = function(keys)
 			return vim.api.nvim_replace_termcodes(keys, true, true, true)
 		end

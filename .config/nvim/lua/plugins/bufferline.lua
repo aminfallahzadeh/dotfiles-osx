@@ -2,8 +2,8 @@
 -- name : bufferline-nvim
 -- url  : https://github.com/akinsho/bufferline.nvim
 -------------------------------------------------
-require("Amin.core.colors.dark")
-require("Amin.core.colors.light")
+require("core.colors.dark")
+require("core.colors.light")
 
 return {
 	"akinsho/bufferline.nvim",

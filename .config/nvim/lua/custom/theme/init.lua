@@ -1,5 +1,5 @@
-require("Amin.core.colors.dark")
-require("Amin.core.colors.light")
+require("core.colors.dark")
+require("core.colors.light")
 
 -- vim.o.background = "dark"
 local mode = vim.fn.trim(vim.fn.system("cat ~/.config/theme/mode"))

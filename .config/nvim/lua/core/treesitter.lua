@@ -4,11 +4,8 @@ local M = {}
 -- Treesitter Setup
 -------------------------------------------------
 
--- Supported languages
--- format: [parser] = filetype
 M.languages = {
 	json = "json",
-	-- lua = "lua",
 	javascript = "javascript",
 	typescript = "typescript",
 	tsx = "typescriptreact",
@@ -26,17 +23,26 @@ function M.setup()
 		vim.treesitter.language.register(parser, filetype)
 	end
 
-	-- Auto-start Treesitter
+	-- Auto-start Treesitter safely
 	vim.api.nvim_create_autocmd("FileType", {
 		callback = function(args)
+			local buf = args.buf
 			local ft = args.match
 
-			-- Start only if we support this filetype
-			for _, filetype in pairs(M.languages) do
+			-- Find the parser for this filetype
+			local parser_name
+			for parser, filetype in pairs(M.languages) do
 				if filetype == ft then
-					vim.treesitter.start()
-					return
+					parser_name = parser
+					break
 				end
+			end
+
+			if parser_name then
+				-- Safe call: won't error if parser is missing
+				pcall(function()
+					vim.treesitter.start(buf, parser_name)
+				end)
 			end
 		end,
 	})

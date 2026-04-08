@@ -1,10 +1,10 @@
-require("Amin.custom.statusline.colors")
+require("custom.statusline.colors")
 
-local git = require("Amin.custom.statusline.components.git")
-local utils = require("Amin.custom.statusline.components.utils")
-local components = require("Amin.custom.statusline.utils")
-local diagnostics = require("Amin.custom.statusline.components.diagnostics")
-local file = require("Amin.custom.statusline.components.file")
+local git = require("custom.statusline.components.git")
+local utils = require("custom.statusline.components.utils")
+local components = require("custom.statusline.utils")
+local diagnostics = require("custom.statusline.components.diagnostics")
+local file = require("custom.statusline.components.file")
 
 function StatusLine()
 	local mode = utils.get_mode_component()

@@ -1,5 +1,5 @@
-require("Amin.core.colors.dark")
-require("Amin.core.colors.light")
+require("core.colors.dark")
+require("core.colors.light")
 
 local function highlight(tag, foreground, background, style)
 	vim.cmd("highlight " .. tag .. " guifg=" .. foreground .. " guibg=" .. background .. " gui=" .. style)

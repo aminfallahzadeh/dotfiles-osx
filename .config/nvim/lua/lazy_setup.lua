@@ -19,7 +19,7 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({
 	spec = {
 		-- import your plugins
-		{ import = "Amin.plugins" },
+		{ import = "plugins" },
 		-- { import = "Amin.plugins.lsp" },
 	},
 	defaults = { lazy = true },
