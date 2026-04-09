@@ -39,7 +39,7 @@ PaletteDark = {
 }
 
 PaletteDarkHighlights = {
-	Normal = { fg = PaletteDark.noir_3, bg = PaletteDark.none },
+	Normal = { fg = PaletteDark.noir_2, bg = PaletteDark.none },
 	NonText = { fg = PaletteDark.noir_2, bg = PaletteDark.none },
 	Comment = { fg = PaletteDark.noir_5, style = "italic" },
 	Constant = { fg = PaletteDark.noir_2 },
@@ -93,11 +93,12 @@ PaletteDarkHighlights = {
 	["@type.qualifier"] = { fg = PaletteDark.noir_6 },
 	["@type.builtin"] = { fg = PaletteDark.noir_1 },
 
-	["@keyword"] = { fg = PaletteDark.noir_4 },
+	-- ["@keyword"] = { fg = PaletteDark.noir_4 },
+	["@keyword"] = { fg = PaletteDark.peach },
 	["@keyword.modifier"] = { fg = PaletteDark.noir_3 },
-	["@keyword.preproc"] = { fg = PaletteDark.noir_4 },
-	["@keyword.namespace"] = { fg = PaletteDark.noir_4 },
-	["@keyword.type"] = { fg = PaletteDark.noir_4 },
+	["@keyword.preproc"] = { fg = PaletteDark.peach },
+	["@keyword.namespace"] = { fg = PaletteDark.peach },
+	["@keyword.type"] = { fg = PaletteDark.peach },
 	["@keyword.control"] = { fg = PaletteDark.noir_4 },
 	["@keyword.operator.logical"] = { fg = PaletteDark.noir_5 },
 	["@keyword.coroutine"] = { fg = PaletteDark.noir_4 },
@@ -201,13 +202,13 @@ PaletteDarkHighlights = {
 	PmenuSbar = { bg = "#181818", fg = PaletteDark.none },
 	PmenuThumb = { bg = PaletteDark.noir_8, fg = PaletteDark.none },
 
-	NoiceCmdlineIcon = { bg = PaletteDark.none, fg = PaletteDark.text },
-	NoiceCmdlinePopup = { bg = PaletteDark.none, fg = PaletteDark.noir_1 },
-	NoiceCmdlinePopupBorderInput = { bg = PaletteDark.none, fg = PaletteDark.noir_3 },
-	NoiceCmdlinePopupBorder = { bg = PaletteDark.none, fg = PaletteDark.noir_3 },
+	-- NoiceCmdlineIcon = { bg = PaletteDark.none, fg = PaletteDark.text },
+	-- NoiceCmdlinePopup = { bg = PaletteDark.none, fg = PaletteDark.noir_1 },
+	-- NoiceCmdlinePopupBorderInput = { bg = PaletteDark.none, fg = PaletteDark.noir_3 },
+	-- NoiceCmdlinePopupBorder = { bg = PaletteDark.none, fg = PaletteDark.noir_3 },
 
-	NoiceLspProgressClient = { fg = PaletteDark.noir_0 },
-	NoiceLspProgressSpinner = { fg = PaletteDark.noir_0 },
+	-- NoiceLspProgressClient = { fg = PaletteDark.noir_0 },
+	-- NoiceLspProgressSpinner = { fg = PaletteDark.noir_0 },
 
 	DiagnosticSignError = { fg = PaletteDark.red },
 	DiagnosticSignWarn = { fg = PaletteDark.yellow },

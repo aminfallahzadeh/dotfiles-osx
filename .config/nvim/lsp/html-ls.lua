@@ -2,7 +2,7 @@ return {
 	cmd = { "vscode-html-language-server", "--stdio" },
 	filetypes = {
 		"html",
-		"blade",
+		-- "blade",
 		"javascriptreact",
 		"typescriptreact",
 		"svelte",

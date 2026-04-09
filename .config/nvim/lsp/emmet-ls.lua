@@ -9,7 +9,7 @@ return {
 		-- "less",
 		"sass",
 		"scss",
-		"pug",
+		-- "pug",
 		"typescriptreact",
 	},
 	init_options = {
