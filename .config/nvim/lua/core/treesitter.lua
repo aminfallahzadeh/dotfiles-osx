@@ -13,6 +13,7 @@ M.languages = {
 	css = "css",
 	scss = "scss",
 	python = "python",
+	yaml = "yaml",
 	markdown = "markdown",
 	["markdown-inline"] = "markdown-inline",
 }
