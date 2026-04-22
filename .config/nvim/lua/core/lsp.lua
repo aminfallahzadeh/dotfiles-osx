@@ -55,7 +55,9 @@ vim.diagnostic.config({
 	signs = {
 		text = signs, -- Enable signs in the gutter
 	},
-	virtual_text = true, -- Specify Enable virtual text for diagnostics
+	virtual_text = { -- Specify Enable virtual text for diagnostics
+		prefix = "|", -- or "▎"
+	},
 	underline = true,
 	-- underline = {
 	--
