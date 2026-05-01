@@ -132,6 +132,13 @@ vim.api.nvim_set_hl(0, "DiagnosticUnnecessary", {})
 -------------------------------------------------
 -- Misc / Extra Settings
 -------------------------------------------------
+-- fix for tanstack save confirmation
+vim.o.autoread = true
+vim.api.nvim_create_autocmd({ "BufEnter", "CursorHold", "CursorHoldI", "FocusGained" }, {
+	command = "if mode() != 'c' | checktime | endif",
+	pattern = { "*" },
+})
+
 vim.g.sass_variables_file = "_variables.scss"
 vim.o.termbidi = true
 vim.o.sessionoptions = "buffers,curdir,folds,help,tabpages,winsize,winpos,localoptions"
