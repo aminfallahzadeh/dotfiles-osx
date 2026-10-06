@@ -5,6 +5,7 @@
 return {
 	"mikavilpas/yazi.nvim",
 	event = "VeryLazy",
+	version = "*",
 	dependencies = {
 		-- check the installation instructions at
 		-- https://github.com/folke/snacks.nvim

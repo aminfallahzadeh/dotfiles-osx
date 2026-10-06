@@ -37,6 +37,7 @@ return {
 				css = { "prettier" },
 				html = { "prettier" },
 				json = { "prettier" },
+				scss = { "prettier" },
 				yaml = { "prettier" },
 				-- markdown = { "prettier" },
 				jsonc = { "deno_fmt" },
