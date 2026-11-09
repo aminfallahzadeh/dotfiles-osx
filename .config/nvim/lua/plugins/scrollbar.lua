@@ -2,32 +2,43 @@
 -- name : nvim-scrollbar
 -- url  : https://github.com/petertriho/nvim-scrollbar
 -------------------------------------------------
-
 return {
 	"petertriho/nvim-scrollbar",
-	branch = "v1",
+	branch = "refactor/v2",
 	lazy = false,
 	config = function()
 		local colors = require("core.colors.dark")
 		require("scrollbar").setup({
-			handle = {
-				color = colors.PaletteDark.noir_6,
+			-- minimap = {
+			-- 	enabled = true,
+			-- },
+			scrollbar = {
+				thumb = {
+					highlight = {
+						bg = colors.PaletteDark.noir_6,
+					},
+				},
+
+				track = {
+					highlight = { bg = "NONE" },
+				},
 			},
-			marks = {
-				Search = { color = colors.PaletteDark.yellow },
-				Error = { color = colors.PaletteDark.red },
-				Warn = { color = colors.PaletteDark.peach },
-				Info = { color = colors.PaletteDark.sky },
-				Hint = { color = colors.PaletteDark.green },
-				Misc = { color = colors.PaletteDark.mauve },
-			},
-			handlers = {
-				cursor = false,
+
+			providers = {
+				cursor = true,
 				diagnostic = true,
 				gitsigns = false,
-				handle = true,
 				search = false,
 				ale = false,
+			},
+
+			marks = {
+				Search = { highlight = { fg = colors.PaletteDark.yellow } },
+				Error = { highlight = { fg = colors.PaletteDark.red } },
+				Warn = { highlight = { fg = colors.PaletteDark.peach } },
+				Info = { highlight = { fg = colors.PaletteDark.sky } },
+				Hint = { highlight = { fg = colors.PaletteDark.green } },
+				Misc = { highlight = { fg = colors.PaletteDark.mauve } },
 			},
 		})
 	end,
