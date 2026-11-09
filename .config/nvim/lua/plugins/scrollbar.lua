@@ -5,6 +5,7 @@
 
 return {
 	"petertriho/nvim-scrollbar",
+	branch = "v1",
 	lazy = false,
 	config = function()
 		local colors = require("core.colors.dark")

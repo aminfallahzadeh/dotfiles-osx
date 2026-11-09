@@ -109,6 +109,20 @@ vim.opt.updatetime = 250
 vim.opt.timeoutlen = 300
 
 -------------------------------------------------
+-- LSP Inline Completion
+-------------------------------------------------
+vim.lsp.inline_completion.enable(true)
+vim.keymap.set("i", "<Tab>", function()
+	if not vim.lsp.inline_completion.get() then
+		return "<Tab>"
+	end
+end, {
+	expr = true,
+	replace_keycodes = true,
+	desc = "Get the current inline completion",
+})
+
+-------------------------------------------------
 -- Backspace Behaviour
 -------------------------------------------------
 vim.opt.backspace = { "start", "eol", "indent" }
